@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 4.0)
+project(learnFTXUI)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(learnFTXUI main.cpp
+        storage.cpp
+        storage.h
+        db_schema.hpp
+        config.cpp
+        config.h
+        commands/project.cpp
+        commands/project.hpp
+        context.hpp)
+
+find_package(nlohmann_json CONFIG REQUIRED)
+target_link_libraries(learnFTXUI PRIVATE nlohmann_json::nlohmann_json)
+
+find_package(ftxui CONFIG REQUIRED)
+target_link_libraries(learnFTXUI PRIVATE ftxui::dom ftxui::screen ftxui::component)
+
+find_package(SqliteOrm CONFIG REQUIRED)
+target_link_libraries(learnFTXUI PRIVATE sqlite_orm::sqlite_orm)
