@@ -1,7 +1,14 @@
 //
 // Created by james on 10/19/25.
 //
+#include <ftxui/dom/elements.hpp>  // for color, Fit, LIGHT, align_right, bold, DOUBLE
+#include <ftxui/dom/table.hpp>      // for Table, TableSelection
+#include <ftxui/screen/screen.hpp>  // for Screen
 
+#include "ftxui/dom/node.hpp"  // for Render
+#include "ftxui/screen/color.hpp"  // for Color, Color::Blue, Color::Cyan, Color::White, ftxui
+#include <vector>
+#include <algorithm>
 #include "project.hpp"
 namespace schema = db::schema;
 ProjectCmdHandles addProjectCommand(CLI::App &app, CLIOptions &opts) {
@@ -13,6 +20,20 @@ ProjectCmdHandles addProjectCommand(CLI::App &app, CLIOptions &opts) {
     h.list = h.root->add_subcommand("list", "List Projects");
     h.root->require_subcommand(1);
     return h;
+}
+
+std::vector<std::vector<std::string>> convertProjectVector(std::vector<schema::Project> src) {
+    std::vector<std::vector<std::string>> dst;
+    dst.reserve(src.size() + 1);
+    dst.emplace_back(std::initializer_list<std::string>{"id", "name"});
+    std::ranges::transform(src, std::back_inserter(dst),
+                           [](const schema::Project& project) {
+                               return std::vector<std::string>{
+                                   std::to_string(project.id),
+                                   project.name,
+                               };
+                           });
+    return dst;
 }
 
 static void runProjectAdd(const AppContext& ctx, const ProjectAddOpts& opts) {
@@ -28,7 +49,36 @@ static void runProjectAdd(const AppContext& ctx, const ProjectAddOpts& opts) {
 }
 
 static void runProjectList(const AppContext& ctx, const ProjectListOpts& opts) {
-    std::cout << "List projects" << std::endl;
+    using namespace ftxui;
+    auto storage = ctx.storage->getStorage();
+    auto projects = storage.get_all<schema::Project>();
+
+    //Convert all values to strings
+    auto converted = convertProjectVector(projects);
+
+    auto table = Table(converted);
+
+    table.SelectAll().Border(LIGHT);
+    table.SelectRow(0).Decorate(bold);
+    table.SelectRow(0).SeparatorVertical(LIGHT);
+    table.SelectColumn(0).Border(LIGHT);
+
+    auto content = table.SelectRows(1, -1);
+    content.Border(LIGHT);
+
+    //Render and display the table;
+    auto tableEl = table.Render();
+
+    auto document = vbox({
+        text("Projects:") | bold,
+        separator(),
+        tableEl
+    });
+
+    auto screen = Screen::Create(Dimension::Fit(document));
+    Render(screen, document);
+    screen.Print();
+    std::cout << std::endl;
 }
 
 void dispatchProject(const ProjectCmdHandles &h,
