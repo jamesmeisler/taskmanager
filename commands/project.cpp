@@ -61,9 +61,20 @@ static void runProjectList(const AppContext& ctx, const ProjectListOpts& opts) {
     table.SelectAll().Border(LIGHT);
     table.SelectRow(0).Decorate(bold);
     table.SelectRow(0).SeparatorVertical(LIGHT);
+    table.SelectColumn(0).Border(LIGHT);
+
+    auto content = table.SelectRows(1, -1);
+    content.Border(LIGHT);
 
     //Render and display the table;
-    auto document = table.Render();
+    auto tableEl = table.Render();
+
+    auto document = vbox({
+        text("Projects:") | bold,
+        separator(),
+        tableEl
+    });
+
     auto screen = Screen::Create(Dimension::Fit(document));
     Render(screen, document);
     screen.Print();

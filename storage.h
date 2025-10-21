@@ -15,6 +15,9 @@ public:
     db::schema::DBStorage &getStorage() { return storage; }
     explicit Storage(const std::string &dbName);
     void sync();
+    bool bucketNameExists(const std::string &bucketName);
+    bool projectNameExists(const std::string &projectName);
+    bool projectIdExists(const int id);
 };
 
 

@@ -21,21 +21,21 @@ namespace db::schema {
 
     struct Bucket {
         int id;
-        std::unique_ptr<int> projectId;
+        int projectId;
         string name;
         bool capex;
     };
 
     struct Task {
         int id;
-        std::unique_ptr<int> bucketId;
+        int bucketId;
         string ticketId;
         string description;
     };
 
     struct Entry {
         int id;
-        std::unique_ptr<int> taskId;
+        int taskId;
         string startTime;
         string endTime;
     };

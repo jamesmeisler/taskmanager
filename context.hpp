@@ -20,10 +20,17 @@ struct ProjectAddOpts {
     std::string name;
 };
 
+struct BucketAddOpts {
+    std::string name;
+    int projectId;
+    bool capex;
+};
+
 struct CLIOptions {
     GlobalOpts globalOpts;
     ProjectAddOpts  projectAddOpts;
     ProjectListOpts  projectListOpts;
+    BucketAddOpts    bucketAddOpts;
 };
 
 #endif
