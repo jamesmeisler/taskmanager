@@ -13,7 +13,9 @@ add_executable(learnFTXUI main.cpp
         commands/project.hpp
         context.hpp
         commands/bucket.cpp
-        commands/bucket.hpp)
+        commands/bucket.hpp
+        commands/task.cpp
+        commands/task.hpp)
 
 find_package(nlohmann_json CONFIG REQUIRED)
 target_link_libraries(learnFTXUI PRIVATE nlohmann_json::nlohmann_json)

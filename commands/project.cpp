@@ -6,7 +6,6 @@
 #include <ftxui/screen/screen.hpp>  // for Screen
 
 #include "ftxui/dom/node.hpp"  // for Render
-#include "ftxui/screen/color.hpp"  // for Color, Color::Blue, Color::Cyan, Color::White, ftxui
 #include <vector>
 #include <algorithm>
 #include "project.hpp"
