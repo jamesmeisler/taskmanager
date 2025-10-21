@@ -59,7 +59,7 @@ static void runProjectList(const AppContext& ctx, const ProjectListOpts& opts) {
     auto table = Table(converted);
 
     table.SelectAll().Border(LIGHT);
-    table.SelectRow(0).Decorate(bold);
+    table.SelectRow(0).DecorateCells(bold);
     table.SelectRow(0).SeparatorVertical(LIGHT);
     table.SelectColumn(0).Border(LIGHT);
 
