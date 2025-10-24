@@ -33,14 +33,17 @@ struct TaskAddOpts {
     int bucketId;
 };
 
-
+struct StartOpts {
+    int taskId;
+};
 
 struct CLIOptions {
-    GlobalOpts globalOpts;
-    ProjectAddOpts  projectAddOpts;
-    ProjectListOpts  projectListOpts;
-    BucketAddOpts    bucketAddOpts;
-    TaskAddOpts       taskAddOpts;
+    GlobalOpts globalOpts{};
+    ProjectAddOpts  projectAddOpts{};
+    ProjectListOpts  projectListOpts{};
+    BucketAddOpts    bucketAddOpts{};
+    TaskAddOpts       taskAddOpts{};
+    StartOpts         startOpts{};
 };
 
 #endif

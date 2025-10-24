@@ -23,6 +23,6 @@ struct BucketCmdHandles {
 BucketCmdHandles addBucketCommand(CLI::App& app, CLIOptions& opts, AppContext& ctx);
 
 void dispatchBucket(const BucketCmdHandles& h, const CLI::App& app,
-    const AppContext& ctx, const CLIOptions opts);
+    const AppContext& ctx, const CLIOptions& opts);
 
 #endif //LEARNFTXUI_BUCKET_HPP

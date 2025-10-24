@@ -139,7 +139,7 @@ static void runBucketAdd(const AppContext& ctx, const BucketAddOpts& opts) {
 }
 
 void dispatchBucket(const BucketCmdHandles &h, const CLI::App &app,
-                    const AppContext &ctx, const CLIOptions opts) {
+                    const AppContext &ctx, const CLIOptions& opts) {
     if (!app.got_subcommand(h.root)) return;
     if (h.root->got_subcommand(h.list)) runBucketList(ctx);
     if (h.root->got_subcommand(h.add)) runBucketAdd(ctx, opts.bucketAddOpts);
