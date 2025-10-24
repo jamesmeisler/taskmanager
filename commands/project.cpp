@@ -81,7 +81,7 @@ static void runProjectList(const AppContext& ctx, const ProjectListOpts& opts) {
 }
 
 void dispatchProject(const ProjectCmdHandles &h,
-    const CLI::App &app, const AppContext &ctx, const CLIOptions opts) {
+    const CLI::App &app, const AppContext &ctx, const CLIOptions& opts) {
     if (!app.got_subcommand(h.root)) return;
     if (h.root->got_subcommand(h.add)) {
         runProjectAdd(ctx, opts.projectAddOpts);

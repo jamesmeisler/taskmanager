@@ -8,6 +8,8 @@
 #include "commands/project.hpp"
 #include "context.hpp"
 #include "commands/bucket.hpp"
+#include "commands/task.hpp"
+
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 int main(const int argc, char** argv) {
@@ -34,6 +36,7 @@ int main(const int argc, char** argv) {
         //register subcommands
         auto project = addProjectCommand(app, opts);
         auto bucket = addBucketCommand(app, opts, ctx);
+        auto task = addTaskCommand(app, opts, ctx);
 
 
         CLI11_PARSE(app, argc, argv);
@@ -41,6 +44,7 @@ int main(const int argc, char** argv) {
         //dispatch after parse
         dispatchProject(project, app, ctx, opts);
         dispatchBucket(bucket, app, ctx, opts);
+        dispatchTask(task, app, ctx, opts);
 
     } catch (const std::runtime_error& e) {
         std::cerr << "Error: " << e.what() << std::endl;

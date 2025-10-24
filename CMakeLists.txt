@@ -25,3 +25,6 @@ target_link_libraries(learnFTXUI PRIVATE ftxui::dom ftxui::screen ftxui::compone
 
 find_package(SqliteOrm CONFIG REQUIRED)
 target_link_libraries(learnFTXUI PRIVATE sqlite_orm::sqlite_orm)
+
+find_package(date CONFIG REQUIRED)
+target_link_libraries(learnFTXUI PRIVATE date::date date::date-tz)

@@ -24,5 +24,5 @@ struct ProjectCmdHandles {
 ProjectCmdHandles addProjectCommand(CLI::App& app, CLIOptions& opts);
 
 void dispatchProject(const ProjectCmdHandles& h, const CLI::App& app,
-    const AppContext& ctx, const CLIOptions opts);
+    const AppContext& ctx, const CLIOptions &opts);
 #endif //LEARNFTXUI_PROJECT_H

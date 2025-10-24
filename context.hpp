@@ -26,11 +26,21 @@ struct BucketAddOpts {
     bool capex;
 };
 
+struct TaskAddOpts {
+    std::string description;
+    std::string ticketId;
+    bool start;
+    int bucketId;
+};
+
+
+
 struct CLIOptions {
     GlobalOpts globalOpts;
     ProjectAddOpts  projectAddOpts;
     ProjectListOpts  projectListOpts;
     BucketAddOpts    bucketAddOpts;
+    TaskAddOpts       taskAddOpts;
 };
 
 #endif
