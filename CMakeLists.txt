@@ -19,7 +19,9 @@ add_executable(learnFTXUI main.cpp
         commands/start.hpp
         commands/start.cpp
         utils/utils.cpp
-        utils/utils.hpp)
+        utils/utils.hpp
+        commands/report.cpp
+        commands/report.hpp)
 
 find_package(nlohmann_json CONFIG REQUIRED)
 target_link_libraries(learnFTXUI PRIVATE nlohmann_json::nlohmann_json)

@@ -34,4 +34,11 @@ bool Storage::projectIdExists(const int id) {
     return false;
 }
 
+bool Storage::taskIdExists(const int id) {
+    if (auto task = storage.get_pointer<schema::Task>(id)) {
+        return true;
+    }
+    return false;
+}
+
 

@@ -17,7 +17,8 @@ public:
     void sync();
     bool bucketNameExists(const std::string &bucketName);
     bool projectNameExists(const std::string &projectName);
-    bool projectIdExists(const int id);
+    bool projectIdExists(int id);
+    bool taskIdExists(int id);
 };
 
 

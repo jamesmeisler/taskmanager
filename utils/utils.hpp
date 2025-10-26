@@ -6,7 +6,7 @@
 #define LEARNFTXUI_UTILS_HPP
 #include <string>
 
-inline std::string getDateTime8601();
+std::string getDateTime8601();
 
 
 #endif //LEARNFTXUI_UTILS_HPP
