@@ -8,6 +8,7 @@
 #include "commands/project.hpp"
 #include "context.hpp"
 #include "commands/bucket.hpp"
+#include "commands/report.hpp"
 #include "commands/start.hpp"
 #include "commands/task.hpp"
 
@@ -35,6 +36,7 @@ int main(const int argc, char** argv) {
         auto bucket = addBucketCommand(app, opts, ctx);
         auto task = addTaskCommand(app, opts, ctx);
         auto start = addStartCommand(app, opts, ctx);
+        auto report = addReportCommand(app, opts, ctx);
 
 
         CLI11_PARSE(app, argc, argv);
@@ -44,6 +46,7 @@ int main(const int argc, char** argv) {
         dispatchBucket(bucket, app, ctx, opts);
         dispatchTask(task, app, ctx, opts);
         dispatchStart(start, app, ctx, opts);
+        dispatchReport(report, app, ctx, opts);
 
     } catch (const std::runtime_error& e) {
         std::cerr << "Error: " << e.what() << std::endl;

@@ -37,6 +37,10 @@ struct StartOpts {
     int taskId;
 };
 
+struct ReportOpts {
+
+};
+
 struct CLIOptions {
     GlobalOpts globalOpts{};
     ProjectAddOpts  projectAddOpts{};
@@ -44,6 +48,7 @@ struct CLIOptions {
     BucketAddOpts    bucketAddOpts{};
     TaskAddOpts       taskAddOpts{};
     StartOpts         startOpts{};
+    ReportOpts        reportOpts{};
 };
 
 #endif
